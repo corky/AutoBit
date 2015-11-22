@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html  lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/starter-template.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="tag.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Auto-Bit</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="chart.html">Charts</a></li>
+                <li><a href="report.html">Reports</a></li>
+                <li class="active"><a href="tag.html">Tag Locations</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <div ng-controller="TagController as tagger">
+            <div ng-controller="AlertController">
+                <script type="text/ng-template" id="alert.html">
+                    <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+                        <div ng-transclude></div>
+                    </div>
+                </script>
+                <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+            </div>
+
+
+            <h2>Tag your "Unknown" Logged Locations</h2>
+
+            <div ng-controller="SelectController as sel">
+                <select ng-model="selLog"  ng-change="update()" ng-options="st.value as st.name for st in fooOptions"></select>
+            </div>
+
+                <div>
+                    <iframe width='500' height='250' ng-src="{{model.imgUrl}}"  frameborder='0' style='border:0'>  <p>Your browser does not support iframes.</p> </iframe>
+                    <div>
+                        <TABLE BORDER="0" align="CENTER">
+                            <TR>
+                                <TD>
+                                    <input type="text" ng-model="model.newTag">
+                                </TD>
+                                <TD>
+                                    <div ng-controller="ButtonController1 as button1">
+                                        <button type="button" class="btn btn-primary" ng-model="singleModel" ng-click="open($event)">
+                                            Create new tag
+                                        </button>
+                                    </div>
+                                </TD>
+                                <TD>
+                                    <div ng-controller="SelectController2 as sel2">
+                                        <select ng-model="model.existingTag"  ng-options="st.value as st.name for st in fooOptions2"></select>
+                                    </div>
+                                </TD>
+                                <TD>
+                                    <div ng-controller="ButtonController2 as button2">
+                                        <button type="button" class="btn btn-primary" ng-model="singleModel" ng-click="open($event)">
+                                            Use Existing Tag
+                                        </button>
+                                    </div>
+                                </TD>
+                            </TR>
+                        </TABLE>
+                    </div>
+                </div>
+        </div>
+
+
+    </div>
+
+</div><!-- /.container -->
+</body>
+</html>
+

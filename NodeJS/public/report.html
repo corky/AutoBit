@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html  lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/starter-template.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Auto-Bit</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="chart.html">Charts</a></li>
+                <li class="active"><a href="report.html">Reports</a></li>
+                <li><a href="tag.html">Tag Locations</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+
+        <h2>"Where did I spend my time" Report</h2>
+        <div ng-controller="ReportController as report">
+
+                <div ng-controller="DatePickerController as datepicker" >
+                    <div>
+                        <p class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="$parent.model.startDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                        </p>
+                    </div>
+                </div>
+
+                <div ng-controller="DatePickerController as datepicker2" >
+                    <div>
+                        <p class="input-group">
+                            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="$parent.model.endDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                      <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                      </span>
+                        </p>
+                    </div>
+                </div>
+                <div ng-controller="ButtonController as button">
+                    <div align="left">
+                        <button type="button" class="btn btn-primary" ng-model="singleModel" ng-click="open($event)">
+                            Go
+                        </button>
+                    </div>
+                </div>
+            <div ng-repeat="r in reportData">
+                <h3>{{r.tagname}}</h3>
+                <h4>{{r.duration}}</h4>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /.container -->
+</body>
+</html>
+
