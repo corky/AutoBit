@@ -19,17 +19,15 @@ The case directory contains the files needed to print the case for the AutoBit o
 
 5) you can test the nodeJS rest service by running the following commands in a tool like Postman.
   
-  POST http://<IP_ADDRESS_OF_BACKEND_SERVICE>:9082/logs
+  POST http://IP_ADDRESS_OF_BACKEND_SERVICE:9082/logs
   { "startTime" : 1447350771, "startLon" : "118.369052W", "startLat" : "34.051655N", "endTime" : 1447350794, "endLon" : "118.369052W", "endLat" : "34.051655N" }
 
-  GET http://<IP_ADDRESS_OF_BACKEND_SERVICE>:9082/logs
+  GET http://IP_ADDRESS_OF_BACKEND_SERVICE:9082/logs
 
 ###LinkIt One setup
 
 1) Setup your linkit one development environment within the Arduino IDE.
 
-2) Load the AutoBit.ino file in the IDE.   Configure the sketch with your local environment settings including:  WIFI name,
-WIFI password, and the IP Address of the backend server the AutoBit will communicate with.  (This will be the IP address
-of where you deployed the NodeJS Server in step A.
+2) Load the AutoBit.ino file in the IDE.   Configure the sketch with your local environment settings including:  WIFI name, WIFI password, and the IP Address of the backend server the AutoBit will communicate with.  (This will be the IP address of where you deployed the NodeJS Server above.
 
 3) Compile and upload your sketch to the LinkIt One
