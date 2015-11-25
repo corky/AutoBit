@@ -11,11 +11,13 @@ The case directory contains the files needed to print the case for the AutoBit o
   
 2) modify the appServer.js to the publically accessible IP address of the computer you are deploying the backend service  on.  Look for YOUR_PUBLIC_IPADDRESS_HERE and replace it with your IP address.
   
-3) start the service by typing <B>nodejs appServer.js</B>.   On some devices (like a raspberry pi) you need to be administrator   to start a node JS service that binds to a public IP address.  In that case run <B>sudo nodejs appServer.js</B>
+3) start the service by typing <B>node appServer.js</B>.   On some devices (like a raspberry pi) you need to be administrator   to start a node JS service that binds to a public IP address.  In that case run <B>sudo node appServer.js</B>
   
-4) there is a sql script to load sample data into your nodeJS service/database if you wish, to play around with the UI.   
+4) there is a sql script to load sample data into your nodeJS service/database if you wish, to play around with the UI.  (If you have existing data...ie existing logs/tags you dont want to lose, then make a backup copy of the gpsDatabase.db file). 
   
   run <B>sqlite3 gpsDatabase.db < sampledata.sql</B>
+
+To revert from the sample data, you can stop the service, and delete the gpsDatabase.db file and restart the service and a new database will be created for you.  If you made a backup, simply stop the service, copy your backup gpsDatabase.db file over the existing one and restart the service and your existing database will be used.
 
 5) you can test the nodeJS rest service by running the following commands in a tool like Postman.
   
